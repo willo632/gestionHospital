@@ -1,0 +1,79 @@
+<div class="page-wrapper">
+
+  <!-- ── HEADER / TOPBAR ──────────────────────────── -->
+  <mat-toolbar color="primary" class="topbar">
+
+    <!-- Logo -->
+    <div class="brand">
+      <mat-icon class="brand-icon">local_hospital</mat-icon>
+      <span class="brand-name">GestiónHospital</span>
+    </div>
+
+    <!-- Nav links — desktop -->
+    <nav class="nav-desktop">
+      @for (item of navItems; track item.route) {
+        <a
+          mat-button
+          [routerLink]="item.route"
+          routerLinkActive="nav-active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          class="nav-link"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <span class="spacer"></span>
+
+    <!-- Hamburger — mobile -->
+    <button mat-icon-button class="hamburger" [matMenuTriggerFor]="mobileMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- User menu -->
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-btn">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <!-- Mobile dropdown -->
+    <mat-menu #mobileMenu="matMenu">
+      @for (item of navItems; track item.route) {
+        <a mat-menu-item [routerLink]="item.route" routerLinkActive="menu-active">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          {{ item.label }}
+        </a>
+      }
+    </mat-menu>
+
+    <!-- User dropdown -->
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Configuración</span>
+      </button>
+      <mat-divider />
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+
+  </mat-toolbar>
+
+  <!-- ── CONTENT ───────────────────────────────────── -->
+  <main class="main-content">
+    <router-outlet />
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────── -->
+  <footer class="footer">
+    <span>&copy; 2025 GestiónHospital &mdash; Todos los derechos reservados</span>
+  </footer>
+
+</div>

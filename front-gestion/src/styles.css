@@ -1,5 +1,9 @@
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'material-icons/iconfont/material-icons.css';
+@import 'primeicons/primeicons.css';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -10,4 +14,79 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ── PrimeNG Toast ─────────────────────────────────── */
+.p-toast {
+  font-family: Roboto, sans-serif;
+  width: 320px;
+}
+
+.p-toast-message {
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.p-toast-message-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.p-toast-message-text {
+  flex: 1;
+}
+
+.p-toast-summary {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.p-toast-detail {
+  font-size: 0.83rem;
+  opacity: 0.9;
+}
+
+.p-toast-icon-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  padding: 4px;
+  color: inherit;
+}
+
+.p-toast-icon-close:hover { opacity: 1; }
+
+/* Success */
+.p-toast-message-success {
+  background: #1B5E20;
+  color: #fff;
+  border-left: 5px solid #69F0AE;
+}
+
+/* Error */
+.p-toast-message-error {
+  background: #B71C1C;
+  color: #fff;
+  border-left: 5px solid #FF8A80;
+}
+
+/* Info */
+.p-toast-message-info {
+  background: #01579B;
+  color: #fff;
+  border-left: 5px solid #80D8FF;
+}
+
+/* Warning */
+.p-toast-message-warn {
+  background: #E65100;
+  color: #fff;
+  border-left: 5px solid #FFD180;
 }

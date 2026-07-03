@@ -1,0 +1,21 @@
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 340px;
+  padding-top: 8px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+input[matInput] {
+  text-transform: uppercase;
+}

@@ -1,114 +1,15 @@
-/* ── PAGE SHELL ────────────────────────────────────── */
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ── TOPBAR ────────────────────────────────────────── */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  gap: 8px;
-}
-
-/* Brand */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.brand-icon {
-  font-size: 28px;
-  width: 28px;
-  height: 28px;
-}
-
-.brand-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* Desktop nav */
-.nav-desktop {
-  display: flex;
-  align-items: center;
-  margin-left: 24px;
-  gap: 4px;
-}
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.85) !important;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  color: #fff !important;
-}
-
-.nav-link.nav-active {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
-}
-
-.spacer {
-  flex: 1;
-}
-
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none !important;
-  color: #fff;
-}
-
-.user-btn {
-  color: #fff;
-}
-
-/* ── MAIN CONTENT ──────────────────────────────────── */
 .main-content {
   flex: 1;
-  padding: 24px;
-  background: #f5f5f5;
+  padding: 28px 32px;
+  background: #F0F6FB;
 }
 
-/* ── FOOTER ────────────────────────────────────────── */
-.footer {
-  background: #1a237e;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 12px 24px;
-  font-size: 0.85rem;
-}
-
-/* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav-desktop {
-    display: none;
-  }
-
-  .hamburger {
-    display: inline-flex !important;
-  }
-
-  .main-content {
-    padding: 16px;
-  }
-}
-
-/* Active link inside mobile menu */
-::ng-deep .menu-active {
-  background: rgba(63, 81, 181, 0.12) !important;
-  color: #3f51b5 !important;
+  .main-content { padding: 16px; }
 }

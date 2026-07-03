@@ -1,0 +1,111 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #01579B;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.page-title mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 420px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background: #E3F2FD;
+  color: #01579B;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+tr.mat-row:hover {
+  background: #F0F6FB;
+}
+
+/* Cell con icono */
+.cell-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.row-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #90A4AE;
+}
+
+/* Motivo truncado */
+.motivo-cell {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badges de estado */
+.badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-pendiente   { background: #FFF8E1; color: #F57F17; }
+.badge-confirmada  { background: #E3F2FD; color: #0277BD; }
+.badge-cancelada   { background: #FFEBEE; color: #C62828; }
+.badge-completada  { background: #E8F5E9; color: #2E7D32; }
+
+/* Sin datos */
+.no-data {
+  text-align: center;
+  padding: 40px 0;
+  color: #90A4AE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.no-data mat-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}

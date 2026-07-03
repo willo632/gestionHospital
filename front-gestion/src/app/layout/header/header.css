@@ -1,0 +1,112 @@
+:host {
+  --clr-primary:    #0277BD;
+  --clr-primary-dk: #01579B;
+  --clr-accent:     #00897B;
+  --clr-text:       #1A2A3A;
+  --clr-muted:      #5A7A9A;
+}
+
+.topbar {
+  background: #fff !important;
+  color: var(--clr-text) !important;
+  border-bottom: 3px solid var(--clr-primary);
+  box-shadow: 0 2px 8px rgba(1, 87, 155, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--clr-primary);
+}
+
+.brand-icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  color: var(--clr-accent);
+}
+
+.brand-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-primary-dk);
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  gap: 4px;
+}
+
+.nav-link {
+  color: var(--clr-muted) !important;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  position: relative;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+.nav-link:hover {
+  color: var(--clr-primary) !important;
+  background: rgba(2, 119, 189, 0.07) !important;
+}
+
+.nav-link.nav-active {
+  color: var(--clr-primary) !important;
+  background: rgba(2, 119, 189, 0.1) !important;
+  font-weight: 600;
+}
+
+.nav-link.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+  background: var(--clr-primary);
+}
+
+.spacer { flex: 1; }
+
+.hamburger {
+  display: none !important;
+  color: var(--clr-primary) !important;
+}
+
+.user-btn {
+  color: var(--clr-muted) !important;
+}
+
+.user-btn:hover {
+  color: var(--clr-primary) !important;
+}
+
+::ng-deep .menu-active {
+  color: var(--clr-primary) !important;
+  background: rgba(2, 119, 189, 0.08) !important;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .hamburger   { display: inline-flex !important; }
+}

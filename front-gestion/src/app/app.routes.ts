@@ -9,15 +9,15 @@ export const routes: Routes = [
       { path: '', redirectTo: 'pacientes', pathMatch: 'full' },
       {
         path: 'pacientes',
-        loadComponent: () => import('./pacientes/pacientes').then(m => m.Pacientes),
+        loadComponent: () => import('./pacientes/lista-paciente').then(m => m.Pacientes),
       },
       {
         path: 'doctores',
-        loadComponent: () => import('./doctores/doctores').then(m => m.Doctores),
+        loadComponent: () => import('./doctores/lista-doctor').then(m => m.Doctores),
       },
       {
         path: 'citas',
-        loadComponent: () => import('./citas/citas').then(m => m.Citas),
+        loadComponent: () => import('./citas/lista-cita').then(m => m.Citas),
       },
     ],
   },

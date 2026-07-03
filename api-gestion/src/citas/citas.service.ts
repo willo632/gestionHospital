@@ -39,33 +39,43 @@ export class CitasService {
   }
 
   async create(dto: CreateCitasDto): Promise<Cita> {
-    await this.pacientesService.findOne(dto.paciente_id);
-    await this.doctoresService.findOne(dto.doctor_id);
-    await this.verificarDisponibilidad(dto.doctor_id, dto.fecha, dto.hora);
+     await this.pacientesService.findOne(dto.paciente_id);
+  await this.doctoresService.findOne(dto.doctor_id);
+  await this.verificarDisponibilidad(dto.doctor_id, dto.fecha, dto.hora);
 
-    const cita = this.citasRepo.create({
-      ...dto,
-      estado: dto.estado ?? 'Pendiente',
-    });
-    const guardada = await this.citasRepo.save(cita);
-    return this.findOne(guardada.cita_id);
+  const cita = this.citasRepo.create({
+    paciente: { paciente_id: dto.paciente_id } as any,
+    doctor: { doctor_id: dto.doctor_id } as any,
+    fecha: dto.fecha,
+    hora: dto.hora,
+    motivo: dto.motivo,
+    estado: dto.estado ?? 'Pendiente',
+  });
+
+  const guardada = await this.citasRepo.save(cita);
+  return this.findOne(guardada.cita_id);
   }
 
   async update(id: number, dto: UpdateCitasDto): Promise<Cita> {
-    const cita = await this.findOne(id);
+      const cita = await this.findOne(id);
 
-    if (dto.doctor_id || dto.fecha || dto.hora) {
-      await this.verificarDisponibilidad(
-        dto.doctor_id ?? cita.doctor_id,
-        dto.fecha ?? cita.fecha,
-        dto.hora ?? cita.hora,
-        cita.cita_id,
-      );
-    }
+  if (dto.doctor_id || dto.fecha || dto.hora) {
+    await this.verificarDisponibilidad(
+      dto.doctor_id ?? cita.doctor_id,
+      dto.fecha ?? cita.fecha,
+      dto.hora ?? cita.hora,
+      cita.cita_id,
+    );
+  }
 
-    Object.assign(cita, dto);
-    await this.citasRepo.save(cita);
-    return this.findOne(id);
+  const { paciente_id, doctor_id, ...resto } = dto;
+
+  Object.assign(cita, resto);
+  if (paciente_id) cita.paciente = { paciente_id } as any;
+  if (doctor_id) cita.doctor = { doctor_id } as any;
+
+  await this.citasRepo.save(cita);
+  return this.findOne(id);
   }
 
   async remove(id: number): Promise<void> {

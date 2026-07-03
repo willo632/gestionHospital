@@ -1,0 +1,107 @@
+<div class="page">
+
+  <!-- Encabezado -->
+  <div class="page-header">
+    <div class="page-title">
+      <mat-icon>event</mat-icon>
+      <h1>Citas</h1>
+    </div>
+    <button mat-flat-button color="primary" (click)="abrirDialog()">
+      <mat-icon>event_add</mat-icon> Nueva cita
+    </button>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Buscar cita</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput (input)="filtrar($event)" placeholder="Paciente, doctor, motivo…">
+      </mat-form-field>
+    </mat-card-content>
+
+    @if (loading()) {
+      <mat-progress-bar mode="indeterminate" />
+    }
+
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="cita_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+          <td mat-cell *matCellDef="let c">{{ c.cita_id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="paciente">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Paciente</th>
+          <td mat-cell *matCellDef="let c">
+            <div class="cell-with-icon">
+              <mat-icon class="row-icon">person</mat-icon>
+              {{ nombrePaciente(c.paciente_id) }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="doctor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Doctor</th>
+          <td mat-cell *matCellDef="let c">
+            <div class="cell-with-icon">
+              <mat-icon class="row-icon">medical_services</mat-icon>
+              {{ nombreDoctor(c.doctor_id) }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+          <td mat-cell *matCellDef="let c">{{ c.fecha }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hora">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora</th>
+          <td mat-cell *matCellDef="let c">{{ c.hora }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="motivo">
+          <th mat-header-cell *matHeaderCellDef>Motivo</th>
+          <td mat-cell *matCellDef="let c" class="motivo-cell">{{ c.motivo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let c">
+            <span class="badge" [ngClass]="'badge-' + c.estado.toLowerCase()">
+              {{ c.estado }}
+            </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let c">
+            <button mat-icon-button color="primary" matTooltip="Editar" (click)="abrirDialog(c)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" matTooltip="Eliminar" (click)="eliminar(c)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell no-data" [attr.colspan]="columns.length">
+            <mat-icon>search_off</mat-icon>
+            <span>No se encontraron citas</span>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons />
+  </mat-card>
+
+</div>

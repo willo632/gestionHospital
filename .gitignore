@@ -1,0 +1,29 @@
+# VS Code
+.vscode/
+**/.vscode/
+
+# Dependencias Node
+node_modules/
+**/node_modules/
+
+# Angular
+**/dist/
+**/.angular/
+**/coverage/
+
+# NestJS / Node build
+**/dist/
+**/coverage/
+
+# Variables de entorno
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
